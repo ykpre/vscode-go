@@ -36,6 +36,10 @@ export class GoDocumentFormattingEditProvider implements vscode.DocumentFormatti
 
 		const formatTool = getFormatTool(goConfig);
 
+		for (let i = 0; i < formatFlags.length; i++) {
+			formatFlags[i] = resolvePath(formatFlags[i]);
+		}
+
 		// Handle issues:
 		//  https://github.com/Microsoft/vscode-go/issues/613
 		//  https://github.com/Microsoft/vscode-go/issues/630
